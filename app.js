@@ -1,18 +1,26 @@
+// CONFIGURAZIONE VARIABILI DI AMBIENTE
 require("dotenv").config();
+
+// CONFIGURAZIONE EXPRESS
 const express = require("express");
 const app = express();
 const port = process.env.HOST_PORT;
 const domain = process.env.HOST_DOMAIN;
 
+// CARTELLA DELLE FOTO CARICATA ONLINE
 app.use(express.static("public"));
 
+// IMPORT DELLE ROUTERS
 const post = require('./routers/post.js');
+
+//SETTINGS ROUTERS
 app.use('/post', post);
 
 app.get("/", (req, res) => {
     res.send("Server del mio Blog");
 });
 
+// START LISTENING
 app.listen(port, () => {
     console.log(`Server online all'indirizzo: ${domain}:${port}`);
 });
