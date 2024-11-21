@@ -1,6 +1,8 @@
+require("dotenv").config();
 const express = require("express");
 const app = express();
-const port = 3000;
+const port = process.env.HOST_PORT;
+const domain = process.env.HOST_DOMAIN;
 
 app.use(express.static("public"));
 
@@ -12,5 +14,5 @@ app.get("/", (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log("Server online sulla porta: " + port);
+    console.log(`Server online all'indirizzo: ${domain}:${port}`);
 });
