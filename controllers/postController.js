@@ -74,7 +74,8 @@ function destroy(req, res){
     
     if(postSelected){
         posts.splice(id, 1);
-        res.json({postDeleted: postSelected, posts: posts   });
+        console.log({postDeleted: postSelected, posts: posts});
+        res.status(204).json();
     }
     
     else
