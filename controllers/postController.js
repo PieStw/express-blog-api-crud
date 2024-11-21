@@ -1,7 +1,16 @@
 const posts = require("./../data/postDB")
 
 function index(req, res){
-    res.json(posts);
+    const tag = req.query.tag;
+
+    if(tag){
+        const newPosts = posts.filter((post) => {
+            return post.tags.includes(tag.toLowerCase())
+        })
+    
+        res.json({posts: newPosts, numeroElementi: newPosts.length});
+    }
+    else res.json({posts: posts, numeroElementi: posts.length});
 }
 
 function show(req, res){
