@@ -31,8 +31,11 @@ function show(req, res){
 }
 
 function store(req, res){
-    const newPost = {id: 5, titolo: "Post5", immagine: "img/ciambellone.jpeg", contenuto: "Lorem ipsum5", tags: ["sole5", "mare5"]}
-    res.json(newPost);
+    console.log(req.body);
+    const {titolo, immagine, contenuto, tags} = req.body;
+    const newPost = {id: posts.at(-1).id + 1, titolo: titolo, immagine: immagine, contenuto: contenuto, tags: tags}
+    posts.push(newPost);
+    res.json(posts);
 }
 
 function update(req, res){

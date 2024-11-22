@@ -10,6 +10,8 @@ const domain = process.env.HOST_DOMAIN;
 // CARTELLA DELLE FOTO CARICATA ONLINE
 app.use(express.static("public"));
 
+app.use(express.json());
+
 // IMPORT DELLE ROUTERS
 const post = require('./routers/post.js');
 
