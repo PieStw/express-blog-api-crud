@@ -48,7 +48,11 @@ function update(req, res){
     const postSelected = posts.find((post) => post.id === parseInt(id)) 
     
     if(postSelected){
-        postSelected.contenuto = "MODIFICATO PARZIALMENTE";
+        const {titolo, immagine, contenuto, tags} = req.body;
+        postSelected.titolo = titolo;
+        postSelected.immagine = immagine;
+        postSelected.contenuto = contenuto;
+        postSelected.tags = tags;
         res.json(postSelected);
     }
     
@@ -66,7 +70,11 @@ function modify(req, res){
     const postSelected = posts.find((post) => post.id === parseInt(id)) 
     
     if(postSelected){
-        postSelected.contenuto = "MODIFICATO TOTALMENTE";
+        const {titolo, immagine, contenuto, tags} = req.body;
+        postSelected.titolo = titolo;
+        postSelected.immagine = immagine;
+        postSelected.contenuto = contenuto;
+        postSelected.tags = tags;
         res.json(postSelected);
     }
     
