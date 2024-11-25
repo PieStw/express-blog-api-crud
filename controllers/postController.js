@@ -1,6 +1,7 @@
 const posts = require("./../data/postDB")
 
 function index(req, res){
+    cccccc.getData;
     const tag = req.query.tag;
 
     if(tag){

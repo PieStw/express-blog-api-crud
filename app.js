@@ -20,7 +20,8 @@ app.use('/post', post);
 
 // SET ERROR HANDLER
 const errorsHandler = require('./middlewares/error.js');
-app.use(errorsHandler);
+app.use(errorsHandler.errorsHandler);
+app.use(errorsHandler.notFound);
 
 app.get("/", (req, res) => {
     res.send("Server del mio Blog");
