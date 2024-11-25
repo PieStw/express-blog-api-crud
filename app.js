@@ -18,6 +18,10 @@ const post = require('./routers/post.js');
 //SETTINGS ROUTERS
 app.use('/post', post);
 
+// SET ERROR HANDLER
+const errorsHandler = require('./middlewares/error.js');
+app.use(errorsHandler);
+
 app.get("/", (req, res) => {
     res.send("Server del mio Blog");
 });

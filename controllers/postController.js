@@ -17,7 +17,9 @@ function show(req, res){
     const {id} = req.params;
 
     if(isNaN(id)){
-        res.status(400).json({ error: "Inserisci un numero" });
+        const err = Error("Inserisci un numero");
+        err.code = 400;
+        throw err;
     }
 
     const postSelected = posts.find((post) => post.id === parseInt(id)) 
@@ -25,9 +27,11 @@ function show(req, res){
     if(postSelected)
         res.json(postSelected);
     
-    else
-        res.status(404).json({ error: "Post non trovato" });
-
+    else{
+        const err = Error("Post non trovato");
+        err.code = 404;
+        throw err;
+    }
 }
 
 function store(req, res){
@@ -42,7 +46,9 @@ function update(req, res){
     const {id} = req.params;
 
     if(isNaN(id)){
-        res.status(400).json({ error: "Inserisci un numero" });
+        const err = Error("Inserisci un numero");
+        err.code = 400;
+        throw err;
     }
 
     const postSelected = posts.find((post) => post.id === parseInt(id)) 
@@ -56,15 +62,20 @@ function update(req, res){
         res.json(postSelected);
     }
     
-    else
-        res.status(404).json({ error: "Post non trovato" });
+    else{
+        const err = Error("Post non trovato");
+        err.code = 404;
+        throw err;
+    }
 }
 
 function modify(req, res){
     const {id} = req.params;
 
     if(isNaN(id)){
-        res.status(400).json({ error: "Inserisci un numero" });
+        const err = Error("Inserisci un numero");
+        err.code = 400;
+        throw err;
     }
 
     const postSelected = posts.find((post) => post.id === parseInt(id)) 
@@ -78,16 +89,20 @@ function modify(req, res){
         res.json(postSelected);
     }
     
-    else
-        res.status(404).json({ error: "Post non trovato" });
-
+    else{
+        const err = Error("Post non trovato");
+        err.code = 404;
+        throw err;
+    }
 }
 
 function destroy(req, res){
     const {id} = req.params;
 
     if(isNaN(id)){
-        res.status(400).json({ error: "Inserisci un numero" });
+        const err = Error("Inserisci un numero");
+        err.code = 400;
+        throw err;
     }
 
     const postSelected = posts.find((post) => post.id === parseInt(id)) 
@@ -98,9 +113,11 @@ function destroy(req, res){
         res.status(204).json();
     }
     
-    else
-        res.status(404).json({ error: "Post non trovato" });
-
+    else{
+        const err = Error("Post non trovato");
+        err.code = 404;
+        throw err;
+    }
 }
 
 
